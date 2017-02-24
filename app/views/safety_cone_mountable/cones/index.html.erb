@@ -1,9 +1,9 @@
-<h1>Safety Cone List</h1>
+<h1>Safety Cone</h1>
 
 <% @cones.each do |cone, options| %>
   <ul>
     <li>
-      <%= options[:name] %>
+      <%= "#{options[:name]}(#{active(cone) ? 'enabled' : 'disabled'})" %>
       <%= link_to 'edit', edit_cone_path(cone)%>
     </li>
   </ul>

@@ -3,7 +3,8 @@
 
 <%= form_for :cone, url: cone_path(@cone.key), method: :PUT do |form| %>
   <%= form.text_field :message %>
-  <%= form.radio_button :measure, 'notice', :checked => true %> Notice
+  <%= form.radio_button :measure, 'notice' %> Notice
   <%= form.radio_button :measure, 'block' %> Block
+  <%= form.radio_button :measure, 'nil' %> Disable
   <%= form.submit %>
 <% end  %>

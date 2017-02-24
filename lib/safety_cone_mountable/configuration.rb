@@ -11,7 +11,7 @@ module SafetyConeMountable
       :action, :name
     ].freeze
 
-    attr_accessor :cones, :options
+    attr_accessor :cones, :options, :redis
 
     # Method add a safety measure
     def add(options = {})
