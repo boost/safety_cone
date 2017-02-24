@@ -1,5 +1,10 @@
 <h1>Safety Cone List</h1>
 
 <% @cones.each do |cone, options| %>
-  <li><%= options[:name] %></li>
+  <ul>
+    <li>
+      <%= options[:name] %>
+      <%= link_to 'edit', edit_cone_path(cone)%>
+    </li>
+  </ul>
 <% end %>

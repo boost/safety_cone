@@ -1,0 +1,9 @@
+<h1>Safety Cone</h1>
+<h2><%= @cone.name %></h2>
+
+<%= form_for :cone, url: cone_path(@cone.key), method: :PUT do |form| %>
+  <%= form.text_field :message %>
+  <%= form.radio_button :measure, 'notice', :checked => true %> Notice
+  <%= form.radio_button :measure, 'block' %> Block
+  <%= form.submit %>
+<% end  %>
