@@ -1,10 +1,27 @@
-<h1>Safety Cone</h1>
+<div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3">
 
-<% @cones.each do |cone, options| %>
-  <ul>
-    <li>
-      <%= "#{options[:name]}(#{active(cone) ? 'enabled' : 'disabled'})" %>
-      <%= link_to 'edit', edit_cone_path(cone)%>
-    </li>
-  </ul>
-<% end %>
+      <h3>Safety Cone</h3>
+      <% @cones.each do |cone, options| %>
+        
+        <div class="row">
+          <div class="col s6">
+            <%= options[:name] %>
+          </div>
+
+          <div class="col s3">
+            <div class="chip">
+              <%= active(cone) ? 'enabled' : 'disabled' %>
+            </div>
+          </div>
+
+          <div class="col s3">
+            <%= link_to 'edit', edit_cone_path(cone), class: 'waves-effect waves-light btn' %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -4,5 +4,4 @@ require 'safety_cone_mountable/filter'
 
 module SafetyConeMountable
   extend Configuration
-  # Your code goes here...
 end
