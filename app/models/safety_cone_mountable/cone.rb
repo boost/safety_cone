@@ -11,7 +11,7 @@ module SafetyConeMountable
       @method = params[:action]
       @method = params[:method]
       @message = params[:message]
-      @measure = params[:measure]
+      @measure = params[:measure] || 'disable'
       @redis = SafetyConeMountable.redis
     end
 

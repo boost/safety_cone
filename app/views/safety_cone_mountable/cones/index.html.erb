@@ -1,8 +1,10 @@
+
 <div class="container">
   <div class="row">
     <div class="col s6 offset-s3">
 
-      <h3>Safety Cone</h3>
+      <h4 class="center">Safety Cone</h4>
+      <hr />
       <% @cones.each do |cone, options| %>
         
         <div class="row">
@@ -11,8 +13,8 @@
           </div>
 
           <div class="col s3">
-            <div class="chip">
-              <%= active(cone) ? 'enabled' : 'disabled' %>
+            <div class="chip status-<%= status(cone) %>">
+              <%= status(cone) %>
             </div>
           </div>
 

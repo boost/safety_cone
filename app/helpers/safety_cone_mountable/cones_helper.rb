@@ -1,9 +1,10 @@
 module SafetyConeMountable
   module ConesHelper
-    def active(key)
+    def status(key)
       cone = Cone.new(key, {})
       cone.fetch
-      ['notice', 'block'].include?(cone.measure) 
+      measure = cone.measure
+      measure == 'disable' ? 'disabled' : measure
     end
   end
 end

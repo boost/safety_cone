@@ -2,3 +2,23 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+body {
+  background-color: #e0e0e0;
+}
+
+.input-field label {
+  top: -0.8rem !important;
+}
+
+.card {
+  padding: 2rem;
+}
+
+.status-notice {
+  background-color: #FFB74D !important;
+}
+
+.status-block { 
+  background-color: #FF8A65 !important;
+}

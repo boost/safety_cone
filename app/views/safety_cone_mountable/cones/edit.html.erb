@@ -1,10 +1,37 @@
-<h1>Safety Cone</h1>
-<h2><%= @cone.name %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3">
 
-<%= form_for :cone, url: cone_path(@cone.key), method: :PUT do |form| %>
-  <%= form.text_field :message %>
-  <%= form.radio_button :measure, 'notice' %> Notice
-  <%= form.radio_button :measure, 'block' %> Block
-  <%= form.radio_button :measure, 'nil' %> Disable
-  <%= form.submit %>
-<% end  %>
+      <h4 class="center">Safety Cone</h4>
+      <h6 class="center"><%= @cone.name %></h6>
+
+      <div class="card">
+        <%= form_for :cone, url: cone_path(@cone.key), method: :PUT do |form| %>
+          <div class="row">
+            <div class="input-field col s12">            
+              <%= form.text_field :message %>
+              <%= form.label :message, 'Message' %>
+            </div>
+
+            <div class="input-field col s12">
+              <%= form.radio_button :measure, 'notice' %>
+              <%= form.label :measure_notice, 'Notice' %>
+
+              <%= form.radio_button :measure, 'block' %>
+              <%= form.label :measure_block, 'Block' %>
+
+              <%= form.radio_button :measure, 'disable' %>
+              <%= form.label :measure_disable, 'Disable' %>
+            </div>
+           
+            <div class="input-field col s12">
+              <%= form.submit 'save', class: 'waves-effect waves-light btn' %>
+              <%= link_to 'cancel', cones_path, class: 'waves-effect waves-light btn grey lighten-1' %>
+            </div>
+          </div>
+        <% end  %>
+      </div>
+
+    </div>
+  </div>
+</div>
