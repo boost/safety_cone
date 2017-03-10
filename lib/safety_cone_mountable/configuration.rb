@@ -8,7 +8,7 @@ module SafetyConeMountable
 
     attr_accessor :cones, :options, :redis, :auth
 
-    # Method add a safety measure
+    # Method add a route or method to be managed by safety cone
     def add(options = {})
       self.options = options
 

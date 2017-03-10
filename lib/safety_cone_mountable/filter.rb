@@ -11,8 +11,6 @@ module SafetyConeMountable
     # Filter method that does the SafetyCone action
     # based on the configuration.
     def safety_cone_filter
-      # return unless SafetyCone.enabled
-      # binding.pry
       if cone = fetch_cone
         flash.clear
         flash[notice_type(cone.measure)] = cone.message
@@ -35,7 +33,7 @@ module SafetyConeMountable
       cone = Cone.new(key, cone)
       cone.fetch
       
-      ['notice', 'block'].include?(cone.measure) ? cone : false
+      %w(notice block).include?(cone.measure) ? cone : false
     end
 
     # Method to redirect a request

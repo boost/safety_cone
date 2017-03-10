@@ -3,8 +3,7 @@ module SafetyConeMountable
     def status(key)
       cone = Cone.new(key, {})
       cone.fetch
-      measure = cone.measure
-      measure == 'disable' ? 'disabled' : measure
+      cone.measure
     end
   end
 end
