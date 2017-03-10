@@ -1,11 +1,6 @@
 module SafetyConeMountable
   # Module for configuring safety measures
   module Configuration
-    VALID_MEASURES = [
-      :block, :warn,
-      :notice, :alert
-    ].freeze
-
     VALID_OPTION_KEYS = [
       :method, :controller,
       :action, :name
@@ -16,7 +11,9 @@ module SafetyConeMountable
     # Method add a safety measure
     def add(options = {})
       self.options = options
-      valid?
+
+      raise(ArgumentError, 'Mandatory param :name missing') unless options[:name]
+
       cones[make_key] = options
     end
 
@@ -29,16 +26,6 @@ module SafetyConeMountable
       else
         raise(ArgumentError,
               'Options should contain :controller and :action or :method.')
-      end
-    end
-
-    # Checks the validity of configuration params
-    def valid?
-      invalid_options = (options.keys - VALID_OPTION_KEYS)
-      unless invalid_options.empty?
-        raise ArgumentError, "Options #{invalid_options} are not valid."
-      else
-        true
       end
     end
 
