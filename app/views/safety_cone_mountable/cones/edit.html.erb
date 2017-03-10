@@ -4,10 +4,10 @@
 
     <div class="card">
       <%= form_for :cone, url: cone_path(@cone.key), method: :PUT do |form| %>
-        <div class="row">
-          <div class="input-field col s12">            
+        <div class="row ">
+          <div class="input-field group col s12">
             <%= form.text_field :message %>
-            <%= form.label :message, 'Message' %>
+            <%= form.label :message, 'Message', class: 'input-label'%>
           </div>
 
           <div class="input-field col s12">
@@ -20,7 +20,7 @@
             <%= form.radio_button :measure, 'disable' %>
             <%= form.label :measure_disable, 'Remove' %>
           </div>
-         
+
           <div class="input-field col s12">
             <%= form.submit 'save', class: 'waves-effect waves-light btn' %>
             <%= link_to 'cancel', cones_path, class: 'waves-effect waves-light btn grey lighten-1' %>
