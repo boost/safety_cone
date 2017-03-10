@@ -11,7 +11,7 @@ module SafetyConeMountable
       :action, :name
     ].freeze
 
-    attr_accessor :cones, :options, :redis
+    attr_accessor :cones, :options, :redis, :auth
 
     # Method add a safety measure
     def add(options = {})
@@ -45,6 +45,8 @@ module SafetyConeMountable
     # Configuration method for Rails initializer
     def configure
       self.cones = {}
+      self.auth = { username: nil, password: nil}
+
       yield self
     end
   end
