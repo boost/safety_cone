@@ -79,6 +79,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    mock_redis (0.17.3)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -162,6 +163,7 @@ DEPENDENCIES
   capybara
   database_cleaner
   factory_girl_rails
+  mock_redis (~> 0.17.3)
   pry
   rails-controller-testing
   rspec-rails

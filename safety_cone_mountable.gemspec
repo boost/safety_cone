@@ -27,4 +27,5 @@ Gem::Specification.new do |s|
 	s.add_development_dependency 'pry'
 	s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'rails-controller-testing'
+	s.add_development_dependency 'mock_redis', '~> 0.17.3'
 end
