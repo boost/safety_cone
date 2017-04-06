@@ -11,7 +11,6 @@ module SafetyConeMountable
 
     routes { SafetyConeMountable::Engine.routes }
     describe '#index' do
-
         before {
           SafetyConeMountable.configure do |config|
             config.add(
@@ -22,9 +21,7 @@ module SafetyConeMountable
             )
             config.auth = { username: 'admin', password: 'password' }
           end
-
         @cones = SafetyConeMountable.cones
-
         get :index
       }
 
@@ -65,11 +62,10 @@ module SafetyConeMountable
       }
       it 'assign the cone'do
         @cones = SafetyConeMountable.cones
-
         get :edit, { id: 'home_edit' }
-        binding.pry
+        #binding.pry
         expect(response).to have_http_status(200)
-        expect(response).to redirect_to cone_path
+        expect(response).to render_template :edit
         #expect(assigns[:cone]).to be_a_new(Cone)
       end
     end
