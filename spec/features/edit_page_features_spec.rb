@@ -9,13 +9,13 @@ feature  'Edit page' do
 
     SafetyConeMountable.configure do |config|
       config.add(
-      controller: :home,
-      action: :index,
-      message: 'This is the flash message with SafetyConeMountable for the home Page',
-      name: 'HomePage',
-      measure: 'notice',
-      redis: $redis,
-      keys: '1234'
+        controller: :home,
+        action: :index,
+        message: 'This is the flash message with SafetyConeMountable for the home Page',
+        name: 'HomePage',
+        measure: 'notice',
+        redis: $redis,
+        keys: '1234'
       )
       config.redis = $redis
       config.auth = { username: 'admin', password: 'password' }
@@ -26,11 +26,12 @@ feature  'Edit page' do
     @cones = SafetyConeMountable.cones
     save_and_open_page
 
-    visit edit_cone_path(id: 'home_index')
+    binding.pry
+    # visit edit_cone_path(id: 'home_index')
 
-    #visit "/safety_cone_mountable/cones/home_index/edit"
-    within '.container' do
-
+    visit "/safety_cone_mountable/cones/home_index/edit"
+    within '.s4' do
+      expect(page).to have_text('Safety Cone');
     end
   end
 
