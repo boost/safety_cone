@@ -6,39 +6,36 @@ require 'mock_redis'
 module SafetyConeMountable
   RSpec.describe ConesController, type: :controller do
 
-    # credentials = ActionController::HttpAuthentication::Basic.encode_credentials 'admin', 'user'
-    # request.env['HTTP_AUTHORIZATION'] = credentials
-
     routes { SafetyConeMountable::Engine.routes }
     describe '#index' do
-        before {
-          SafetyConeMountable.configure do |config|
-            config.add(
-              controller: :home,
-              action: :index,
-              message: 'This is the flash message with SafetyConeMountable for the home Page',
-              name: 'HomePage',
-            )
-            config.auth = { username: 'admin', password: 'password' }
-          end
+      before {
+        SafetyConeMountable.configure do |config|
+          config.add(
+            controller: :home,
+            action: :index,
+            message: 'This is the flash message with SafetyConeMountable for the home Page',
+            name: 'HomePage',
+          )
+          config.auth = { username: 'admin', password: 'password' }
+        end
         @cones = SafetyConeMountable.cones
         get :index
       }
 
-      it 'response 200 status code' do
+      it 'response status 200' do
         expect(response).to have_http_status(200)
       end
 
       it 'render :index template' do
-        #expect(response).to render_template :index
+        expect(response).to render_template :index
       end
 
       it 'should renter with correct responsed' do
         expect(SafetyConeMountable.cones).to eq( { home_index: {
-            controller: :home,
-            action: :index,
-            message: 'This is the flash message with SafetyConeMountable for the home Page',
-            name: 'HomePage'} })
+          controller: :home,
+          action: :index,
+          message: 'This is the flash message with SafetyConeMountable for the home Page',
+          name: 'HomePage'} })
       end
     end
 
@@ -59,14 +56,16 @@ module SafetyConeMountable
           config.redis = $redis
           config.auth = { username: 'admin', password: 'password' }
         end
-      }
-      it 'assign the cone'do
         @cones = SafetyConeMountable.cones
         get :edit, { id: 'home_edit' }
-        #binding.pry
+      }
+
+      it 'response status 200'do
         expect(response).to have_http_status(200)
+      end
+
+      it 'render :edit template' do
         expect(response).to render_template :edit
-        #expect(assigns[:cone]).to be_a_new(Cone)
       end
     end
   end

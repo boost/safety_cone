@@ -36,4 +36,12 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+  config.before(:each, :type => :controller) { @routes = SafetyConeMountable::Engine.routes }
+  config.before(:each, :type => :routing)    { @routes = SafetyConeMountable::Engine.routes }
+
+  [:controller, :view, :request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess, :type => type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, :type => type
+    config.include ::Rails::Controller::Testing::Integration, :type => type
+  end
 end
