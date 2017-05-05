@@ -1,9 +1,5 @@
-# spec/support/capybara.rb
-require 'capybara/rspec'
 require 'capybara/rails'
+require 'capybara/rspec'
 
 Capybara.app = SafetyConeMountable::Engine
-
-RSpec.configure do |config|
-  config.include SafetyConeMountable::Engine.routes.url_helpers
-end
+Capybara.default_max_wait_time = 2

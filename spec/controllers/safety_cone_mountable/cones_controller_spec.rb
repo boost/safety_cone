@@ -48,7 +48,7 @@ module SafetyConeMountable
             controller: :home,
             action: :edit,
             message: 'This is the flash message with SafetyConeMountable for the home Page',
-            name: 'HomePage',
+            name: 'editPage',
             measure: 'notice',
             redis: $redis,
             keys: '1234'
@@ -60,7 +60,7 @@ module SafetyConeMountable
         get :edit, { id: 'home_edit' }
       }
 
-      it 'response status 200'do
+      it 'response status 200' do
         expect(response).to have_http_status(200)
       end
 

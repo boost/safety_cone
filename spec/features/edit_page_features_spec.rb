@@ -1,9 +1,7 @@
 require 'rails_helper'
-require 'spec_helper'
-require 'pry'
 
 feature  'Edit page' do
-  before {
+  before do
     $redis = MockRedis.new
     $redis.set('safety_cone', 'home_index')
 
@@ -12,7 +10,7 @@ feature  'Edit page' do
         controller: :home,
         action: :index,
         message: 'This is the flash message with SafetyConeMountable for the home Page',
-        name: 'HomePage',
+        name: 'EditPage',
         measure: 'notice',
         redis: $redis,
         keys: '1234'
@@ -20,18 +18,34 @@ feature  'Edit page' do
       config.redis = $redis
       config.auth = { username: 'admin', password: 'password' }
     end
-  }
+  end
 
-  scenario 'A user sees the safety cone Configuration page header' do
+  scenario 'header text' do
     @cones = SafetyConeMountable.cones
-    save_and_open_page
+    visit root_path
 
-    binding.pry
-    # visit edit_cone_path(id: 'home_index')
+    find('.btn', text: 'edit').click
 
-    visit "/safety_cone_mountable/cones/home_index/edit"
-    within '.s4' do
+    within '.s4.center' do
       expect(page).to have_text('Safety Cone');
+    end
+  end
+
+
+  scenario 'has edit form' do
+    @cones = SafetyConeMountable.cones
+    visit root_path
+
+    find('.btn', text: 'edit').click
+
+    within 'form' do
+      expect(page).to have_selector('.input-field');
+      expect(page).to have_selector('.input-label');
+      expect(page).to have_selector('#cone_measure_notice');
+      expect(page).to have_selector('#cone_measure_block');
+      expect(page).to have_selector('#cone_measure_disabled');
+      expect(page).to have_selector('.waves-light.btn');
+      expect(page).to have_selector('.waves-light.btn.grey');
     end
   end
 

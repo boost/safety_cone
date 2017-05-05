@@ -1,10 +1,7 @@
 require 'rails_helper'
-require 'spec_helper'
-require 'pry'
-require 'mock_redis'
 
 feature  'Home page' do
-  before {
+  background {
     $redis = MockRedis.new
     $redis.set('safety_cone', 'home_index')
 
@@ -22,7 +19,7 @@ feature  'Home page' do
     end
   }
 
-  scenario 'A user sees the safety cone Configuration page header' do
+  scenario 'header text' do
     @cones = SafetyConeMountable.cones
     visit root_path
     within '.s4' do
@@ -30,17 +27,14 @@ feature  'Home page' do
     end
   end
 
-  scenario 'A user sees the safety cone Configuration page header' do
+  scenario 'page have all the element' do
     @cones = SafetyConeMountable.cones
     visit root_path
+
     within '.s6.offset-s3' do
       expect(page).to have_selector('.waves-light.btn')
       expect(page).to have_text('HomePage');
       expect(page).to have_text('edit');
-
-       find('.btn', text: 'edit').click
-      # expect(page).to have_selector('.input-field');
-      #response.should render_template('home_index/edit')
     end
   end
 
