@@ -13,7 +13,6 @@ require 'capybara/rspec'
 require 'rails-controller-testing'
 
 
-
 ActiveRecord::Migration.maintain_test_schema!
 ActiveRecord::Migrator.migrations_paths = 'spec/dummy/db/migrate'
 
