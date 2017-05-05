@@ -1,4 +1,3 @@
-require 'pry'
 module SafetyConeMountable
   class Cone
     attr_accessor :name, :controller, :action,
