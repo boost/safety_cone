@@ -24,17 +24,15 @@ module SafetyConeMountable
           name: 'Home Page'
         )
       end
+
+      controller_instance.stub(:controller_name) { 'static_pages' }
+      controller_instance.stub(:action_name) { 'home' }
+      allow(redis).to receive(:get) { { message: 'foo', measure: 'quxx' }.to_json }
     end
 
     # This requires a lot more improvements
     context 'Request to home page' do
       it 'fetches all the cones' do
-        controller_instance.stub(:controller_name) { 'static_pages' }
-        controller_instance.stub(:action_name) { 'home' }
-
-
-        allow(redis).to receive(:get) { { message: 'foo', measure: 'quxx' }.to_json }
-
         allow(SafetyConeMountable).to receive(:cones) { { static_pages_home: { 
                                                      controller: :static_pages, 
                                                      action: :home, name: 'Home Page' } 

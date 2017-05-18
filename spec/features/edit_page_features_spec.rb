@@ -26,7 +26,6 @@ feature  'Edit page' do
     @cones = SafetyConeMountable.cones
     save_and_open_page
 
-    binding.pry
     # visit edit_cone_path(id: 'home_index')
 
     visit "/safety_cone_mountable/cones/home_index/edit"
