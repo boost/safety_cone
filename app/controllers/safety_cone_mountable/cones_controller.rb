@@ -1,8 +1,11 @@
 require_dependency "safety_cone_mountable/application_controller"
+
 module SafetyConeMountable
   class ConesController < ApplicationController
-    http_basic_authenticate_with name: SafetyConeMountable.auth[:username], 
-                                 password: SafetyConeMountable.auth[:password] if (SafetyConeMountable.auth[:username] && SafetyConeMountable.auth[:password])
+    unless Rails.env.test?
+      http_basic_authenticate_with name: SafetyConeMountable.auth[:username],
+        password: SafetyConeMountable.auth[:password] if (SafetyConeMountable.auth[:username] && SafetyConeMountable.auth[:password])
+    end
 
     def index
       @cones = SafetyConeMountable.cones
@@ -18,7 +21,7 @@ module SafetyConeMountable
       cone = SafetyConeMountable.cones[params[:id].to_sym]
       mereged_params = cone.merge(params[:cone].symbolize_keys)
       Cone.new(params[:id], mereged_params).save
-      
+
       redirect_to cones_path
     end
   end

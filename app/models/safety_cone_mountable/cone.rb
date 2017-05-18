@@ -3,7 +3,7 @@ module SafetyConeMountable
     attr_accessor :name, :controller, :action,
                   :method, :message, :measure,
                   :key, :redis
-  
+
     def initialize(key, params)
       @key = key
       @name = params[:name]
@@ -22,6 +22,7 @@ module SafetyConeMountable
 
     def fetch
       stored_data = @redis.get(redis_key)
+
       if stored_data
         data = JSON.parse(stored_data)
         @message = data['message']
