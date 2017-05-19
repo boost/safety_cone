@@ -28,18 +28,17 @@ SafetyConeMountable.configure do |config|
   # Http auth username and password for safetcone admin page
   config.auth = { username: 'admin', password: 'admin-password' }
 
-  # Added controller action to safety cone
+  # To allow safety cone to manage a single controller action
   config.add(
     controller: :registrations,
     action: :new,
     name: 'User Registration'
   )
 
-  # Added controller action to safety cone
+  # To allow safety cone to manage all POST requests
   config.add(
-    controller: :records,
-    action: :create,
-    name: 'Record Creation'
+    method: 'POST'
+    name: 'All POST requests'
   )  
 end
 ```
