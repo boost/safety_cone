@@ -11,7 +11,7 @@ require "action_cable/engine"
 require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
-require "safety_cone_mountable"
+require "safety_cone"
 
 module Dummy
   class Application < Rails::Application

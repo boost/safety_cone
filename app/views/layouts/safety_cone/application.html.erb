@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Safety Cone</title>
+  <%= stylesheet_link_tag "safety_cone/application", media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col s1 offset-s4">
+        <%= image_tag('safety_cone/logo.png', size: "80x80") %>
+      </div>
+      <div class="col s4 center">
+        <h4>Safety Cone</h4>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
+</body>
+</html>

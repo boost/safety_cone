@@ -8,7 +8,6 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'rails-controller-testing'
 
-
 Rails.backtrace_cleaner.remove_silencers!
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
@@ -26,7 +25,6 @@ RSpec.configure do |config|
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-
   config.use_transactional_fixtures = true
 
   config.infer_base_class_for_anonymous_controllers = false
@@ -36,8 +34,8 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
-  config.before(:each, :type => :controller) { @routes = SafetyConeMountable::Engine.routes }
-  config.before(:each, :type => :routing)    { @routes = SafetyConeMountable::Engine.routes }
+  config.before(:each, :type => :controller) { @routes = SafetyCone::Engine.routes }
+  config.before(:each, :type => :routing)    { @routes = SafetyCone::Engine.routes }
 
   [:controller, :view, :request].each do |type|
     config.include ::Rails::Controller::Testing::TestProcess, :type => type

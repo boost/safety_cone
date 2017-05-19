@@ -8,7 +8,7 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'safety_cone_mountable'
+gem 'safety_cone'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install safety_cone_mountable
+$ gem install safety_cone
 ```
 
 ## Contributing

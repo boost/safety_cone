@@ -5,11 +5,11 @@ feature  'Edit page' do
     $redis = MockRedis.new
     $redis.set('safety_cone', 'home_index')
 
-    SafetyConeMountable.configure do |config|
+    SafetyCone.configure do |config|
       config.add(
         controller: :home,
         action: :index,
-        message: 'This is the flash message with SafetyConeMountable for the home Page',
+        message: 'This is the flash message with SafetyCone for the home Page',
         name: 'EditPage',
         measure: 'notice',
         redis: $redis,
@@ -21,7 +21,7 @@ feature  'Edit page' do
   end
 
   scenario 'header text' do
-    @cones = SafetyConeMountable.cones
+    @cones = SafetyCone.cones
     visit root_path
 
     find('.btn', text: 'edit').click
@@ -31,9 +31,8 @@ feature  'Edit page' do
     end
   end
 
-
   scenario 'has edit form' do
-    @cones = SafetyConeMountable.cones
+    @cones = SafetyCone.cones
     visit root_path
 
     find('.btn', text: 'edit').click
@@ -48,5 +47,4 @@ feature  'Edit page' do
       expect(page).to have_selector('.waves-light.btn.grey');
     end
   end
-
 end

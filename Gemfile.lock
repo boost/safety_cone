@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    safety_cone_mountable (0.1.0)
+    safety_cone (0.1.0)
       rails (<= 5.0.2)
       redis (~> 3.3, >= 3.3.3)
 
@@ -170,8 +170,8 @@ DEPENDENCIES
   pry
   rails-controller-testing
   rspec-rails
-  safety_cone_mountable!
+  safety_cone!
   sqlite3
 
 BUNDLED WITH
-   1.13.6
+   1.14.4

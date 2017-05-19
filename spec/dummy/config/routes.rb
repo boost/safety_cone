@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount SafetyConeMountable::Engine => "/cones"
+  mount SafetyCone::Engine => "/cones"
 end
