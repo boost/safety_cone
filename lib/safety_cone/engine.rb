@@ -1,9 +1,9 @@
-module SafetyConeMountable
+module SafetyCone
   class Engine < ::Rails::Engine
-    isolate_namespace SafetyConeMountable
+    isolate_namespace SafetyCone
 
     initializer "refinery.assets.precompile" do |app|
-      app.config.assets.precompile += %w(safety_cone_mountable/logo.png)
+      app.config.assets.precompile += %w(safety_cone/logo.png)
     end
 
     config.generators do |g|

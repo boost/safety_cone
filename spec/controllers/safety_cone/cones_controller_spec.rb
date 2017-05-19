@@ -1,24 +1,21 @@
 require 'rails_helper'
-require 'pry'
-require 'rails-controller-testing'
-require 'mock_redis'
 
-module SafetyConeMountable
+module SafetyCone
   RSpec.describe ConesController, type: :controller do
 
-    routes { SafetyConeMountable::Engine.routes }
+    routes { SafetyCone::Engine.routes }
     describe '#index' do
       before {
-        SafetyConeMountable.configure do |config|
+        SafetyCone.configure do |config|
           config.add(
             controller: :home,
             action: :index,
-            message: 'This is the flash message with SafetyConeMountable for the home Page',
+            message: 'This is the flash message with SafetyCone for the home Page',
             name: 'HomePage',
           )
           config.auth = { username: 'admin', password: 'password' }
         end
-        @cones = SafetyConeMountable.cones
+        @cones = SafetyCone.cones
         get :index
       }
 
@@ -31,10 +28,10 @@ module SafetyConeMountable
       end
 
       it 'should renter with correct responsed' do
-        expect(SafetyConeMountable.cones).to eq( { home_index: {
+        expect(SafetyCone.cones).to eq( { home_index: {
           controller: :home,
           action: :index,
-          message: 'This is the flash message with SafetyConeMountable for the home Page',
+          message: 'This is the flash message with SafetyCone for the home Page',
           name: 'HomePage'} })
       end
     end
@@ -43,11 +40,11 @@ module SafetyConeMountable
       before {
         $redis = MockRedis.new
         $redis.set('safety_cone', 'home_edit')
-        SafetyConeMountable.configure do |config|
+        SafetyCone.configure do |config|
           config.add(
             controller: :home,
             action: :edit,
-            message: 'This is the flash message with SafetyConeMountable for the home Page',
+            message: 'This is the flash message with SafetyCone for the home Page',
             name: 'editPage',
             measure: 'notice',
             redis: $redis,
@@ -56,7 +53,7 @@ module SafetyConeMountable
           config.redis = $redis
           config.auth = { username: 'admin', password: 'password' }
         end
-        @cones = SafetyConeMountable.cones
+        @cones = SafetyCone.cones
         get :edit, { id: 'home_edit' }
       }
 

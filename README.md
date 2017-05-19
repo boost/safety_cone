@@ -13,6 +13,9 @@ And then execute:
 ```bash
 $ bundle
 ```
+Or install it yourself as:
+```bash
+$ gem install safety_cone
 
 ## Usage
 
@@ -47,6 +50,7 @@ In routes add
 
 ```
   mount SafetyConeMountable::Engine, :at => '/safety_cone'
+>>>>>>> master
 ```
 
 In ApplicationController

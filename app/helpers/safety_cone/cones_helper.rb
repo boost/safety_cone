@@ -1,4 +1,4 @@
-module SafetyConeMountable
+module SafetyCone
   module ConesHelper
     def status(key)
       cone = Cone.new(key, {})

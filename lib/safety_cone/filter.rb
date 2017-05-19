@@ -1,4 +1,4 @@
-module SafetyConeMountable
+module SafetyCone
   # Module for Filtering requests and raise notices
   # and take measures
   module Filter
@@ -20,7 +20,7 @@ module SafetyConeMountable
 
     # Fetches a configuration based on current request
     def fetch_cone
-      cones = SafetyConeMountable.cones
+      cones = SafetyCone.cones
 
       if cone = cones[request_action]
         key = request_action

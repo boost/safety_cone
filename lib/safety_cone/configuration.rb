@@ -1,4 +1,4 @@
-module SafetyConeMountable
+module SafetyCone
   # Module for configuring safety measures
   module Configuration
     VALID_OPTION_KEYS = [

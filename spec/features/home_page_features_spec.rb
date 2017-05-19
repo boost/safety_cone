@@ -5,11 +5,11 @@ feature  'Home page' do
     $redis = MockRedis.new
     $redis.set('safety_cone', 'home_index')
 
-    SafetyConeMountable.configure do |config|
+    SafetyCone.configure do |config|
       config.add(
         controller: :home,
         action: :index,
-        message: 'This is the flash message with SafetyConeMountable for the home Page',
+        message: 'This is the flash message with SafetyCone for the home Page',
         name: 'HomePage',
         measure: 'notice',
         redis: $redis
@@ -20,7 +20,7 @@ feature  'Home page' do
   }
 
   scenario 'header text' do
-    @cones = SafetyConeMountable.cones
+    @cones = SafetyCone.cones
     visit root_path
     within '.s4' do
       expect(page).to have_text('Safety Cone');
@@ -28,7 +28,7 @@ feature  'Home page' do
   end
 
   scenario 'page have all the element' do
-    @cones = SafetyConeMountable.cones
+    @cones = SafetyCone.cones
     visit root_path
 
     within '.s6.offset-s3' do

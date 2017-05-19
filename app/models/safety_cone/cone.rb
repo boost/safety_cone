@@ -1,4 +1,4 @@
-module SafetyConeMountable
+module SafetyCone
   class Cone
     attr_accessor :name, :controller, :action,
                   :method, :message, :measure,
@@ -12,7 +12,7 @@ module SafetyConeMountable
       @method = params[:method]
       @message = params[:message]
       @measure = params[:measure] || 'disabled'
-      @redis = SafetyConeMountable.redis
+      @redis = SafetyCone.redis
     end
 
     def save
