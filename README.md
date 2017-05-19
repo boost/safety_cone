@@ -1,4 +1,4 @@
-# SafetyCone
+# SafetyCone ![alt text] (https://github.com/boost/safety_cone/blob/master/app/assets/images/safety_cone/logo.png)
 
 Safety Cone is a Rails gem that lets an application to temporarily warn/block requests to pages in case of maintenance. Safety Cone allows the application raise warnings or custom messages managed from an interface.
 
@@ -13,9 +13,6 @@ And then execute:
 ```bash
 $ bundle
 ```
-Or install it yourself as:
-```bash
-$ gem install safety_cone
 
 ## Usage
 
@@ -50,7 +47,6 @@ In routes add
 
 ```
   mount SafetyConeMountable::Engine, :at => '/safety_cone'
->>>>>>> master
 ```
 
 In ApplicationController
