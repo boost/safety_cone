@@ -1,7 +1,7 @@
-![safety cone logo](https://raw.githubusercontent.com/boost/safety_cone/master/app/assets/images/safety_cone/logo.png) 
-#  SafetyCone 
+![safety cone logo](https://raw.githubusercontent.com/boost/safety_cone/master/app/assets/images/safety_cone/logo.png)
+#  SafetyCone
 
-Safety Cone is a Rails gem that lets an application to temporarily warn/block requests to pages in case of maintenance. Safety Cone allows the application raise warnings or custom messages managed from an interface.
+Safety Cone is a Rails gem that allows you to temporarily add warnings or block requests to specific pages through a simple interface. It's intended use case is primarily for maintenance.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -17,30 +17,30 @@ $ bundle
 
 ## Usage
 
-Create a safety_con.rb file in config/initializer/. The routes that needs to be managed can be added to this config file.
+Create a safety_cone.rb file in config/initializers. The routes that needs to be managed can be added to this config file.
 
 ```
 $redis = Redis::Namespace.new("app_name", :redis => Redis.new)
 
-SafetyConeMountable.configure do |config|
-  # REdis connection for safety_cone
+SafetyCone.configure do |config|
+  # Redis connection for safety_cone
   config.redis = $redis
 
-  # Http auth username and password for safetcone admin page
+  # Http auth username and password for Safety Cone admin page
   config.auth = { username: 'admin', password: 'admin-password' }
 
-  # To allow safety cone to manage a single controller action
+  # To allow Safety Cone to manage a single controller action
   config.add(
     controller: :registrations,
     action: :new,
     name: 'User Registration'
   )
 
-  # To allow safety cone to manage all POST requests
+  # To allow Safety Cone to manage all POST requests
   config.add(
     method: 'POST',
     name: 'All POST requests'
-  )  
+  )
 end
 ```
 
@@ -61,20 +61,19 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-Now you should be able to got to http://localhost:3000/safety_cone and manage your routes.
+Now you should be able to go to http://localhost:3000/safety_cone and manage your routes.
 
 
-SafetyCone uses flash messages. So its expected that flash messages are rendered on all views.
+SafetyCone uses flash messages. It is expected that flash messages are rendered on all views.
 
 
 ## For version 0.1.0 users
 
-This old version doesnt have a mountable engine that allows an admin to control safety cone from an interface. The configuration for it is as follows
-
+This earlier version is not a mountable engine and it does not provide an admin interface. The configuration is as follows:
 
 ```
 SafetyCone.configure do |config|
-  # disables safety_cone. By default this value is true
+  # disables Safety Cone. By default this value is true
   config.enabled = false
 
   # This config will block all POST requests and display this message.
