@@ -38,7 +38,7 @@ SafetyConeMountable.configure do |config|
 
   # To allow safety cone to manage all POST requests
   config.add(
-    method: 'POST'
+    method: 'POST',
     name: 'All POST requests'
   )  
 end
@@ -47,7 +47,7 @@ end
 In routes add
 
 ```
-  mount SafetyConeMountable::Engine, :at => '/safety_cone'
+  mount SafetyCone::Engine, :at => '/safety_cone'
 ```
 
 In ApplicationController
