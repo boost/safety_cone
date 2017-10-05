@@ -5,17 +5,18 @@ module SafetyCone
     # Method to include to base class.
     # This lets declare a before filter here
     def self.included(base)
-      base.before_filter :safety_cone_filter
+      base.before_action :safety_cone_filter
     end
 
     # Filter method that does the SafetyCone action
     # based on the configuration.
     def safety_cone_filter
-      if cone = fetch_cone
-        flash.clear
-        flash[notice_type(cone.measure)] = cone.message
-        redirect_to safety_redirect if cone.measure == 'block'
-      end
+      cone = fetch_cone
+      return unless cone
+ 
+      flash.clear
+      flash[notice_type(cone.measure)] = cone.message
+      redirect_to safety_redirect if cone.measure == 'block'
     end
 
     # Fetches a configuration based on current request
@@ -33,12 +34,14 @@ module SafetyCone
       cone = Cone.new(key, cone)
       cone.fetch
       
-      %w(notice block).include?(cone.measure) ? cone : false
+      %w[notice block].include?(cone.measure) ? cone : false
     end
 
     # Method to redirect a request
+    # Redirected to the last page by default
+    # If there is no HTTP_REFERER its redirected to root
     def safety_redirect
-      request.env['HTTP_REFERER']
+      request.env['HTTP_REFERER'] || root_path
     end
 
     # Returns type of notice

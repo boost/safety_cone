@@ -19,10 +19,16 @@ module SafetyCone
 
     def update
       cone = SafetyCone.cones[params[:id].to_sym]
-      mereged_params = cone.merge(params[:cone].symbolize_keys)
+      mereged_params = cone.merge(cone_params.to_h.symbolize_keys)
       Cone.new(params[:id], mereged_params).save
 
       redirect_to cones_path
+    end
+
+    private
+
+    def cone_params
+      params.require(:cone).permit(:message, :measure)
     end
   end
 end

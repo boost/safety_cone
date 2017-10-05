@@ -27,22 +27,24 @@ module SafetyCone
 
       controller_instance.stub(:controller_name) { 'static_pages' }
       controller_instance.stub(:action_name) { 'home' }
+      controller_instance.stub(:request_method) { :home }
       allow(redis).to receive(:get) { { message: 'foo', measure: 'quxx' }.to_json }
     end
 
     # This requires a lot more improvements
-    context 'Request to home page' do
-      it 'fetches all the cones' do
+    context 'Filter for a controller action' do
+      before do
         allow(SafetyCone).to receive(:cones) { { static_pages_home: { 
                                                      controller: :static_pages, 
                                                      action: :home, name: 'Home Page' } 
-                                                   } }
+                                                   } }        
+      end
 
+      it 'fetches all the cones' do
         expect(SafetyCone).to receive(:cones)
 
         controller_instance.fetch_cone
       end
     end
-
   end
 end
