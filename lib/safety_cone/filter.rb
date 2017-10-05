@@ -5,7 +5,7 @@ module SafetyCone
     # Method to include to base class.
     # This lets declare a before filter here
     def self.included(base)
-      base.before_filter :safety_cone_filter
+      base.before_action :safety_cone_filter
     end
 
     # Filter method that does the SafetyCone action
@@ -37,8 +37,10 @@ module SafetyCone
     end
 
     # Method to redirect a request
+    # Redirected to the last page by default
+    # If there is no HTTP_REFERER its redirected to root
     def safety_redirect
-      request.env['HTTP_REFERER']
+      request.env['HTTP_REFERER'] || root_path
     end
 
     # Returns type of notice
