@@ -11,11 +11,12 @@ module SafetyCone
     # Filter method that does the SafetyCone action
     # based on the configuration.
     def safety_cone_filter
-      if cone = fetch_cone
-        flash.clear
-        flash[notice_type(cone.measure)] = cone.message
-        redirect_to safety_redirect if cone.measure == 'block'
-      end
+      cone = fetch_cone
+      return unless cone
+ 
+      flash.clear
+      flash[notice_type(cone.measure)] = cone.message
+      redirect_to safety_redirect if cone.measure == 'block'
     end
 
     # Fetches a configuration based on current request
@@ -33,7 +34,7 @@ module SafetyCone
       cone = Cone.new(key, cone)
       cone.fetch
       
-      %w(notice block).include?(cone.measure) ? cone : false
+      %w[notice block].include?(cone.measure) ? cone : false
     end
 
     # Method to redirect a request
