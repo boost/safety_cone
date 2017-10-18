@@ -61,11 +61,21 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+In View
+
+``` 
+<div class="container">
+  <% if safetycone_notice %>
+    <div class="notice"><%= safetycone_notice %></div>
+  <% end %>
+ 
+   <% if safetycone_alert %>
+    <div class="alert"><%= safetycone_alert %></div>
+  <% end %> 
+</div>
+```
+
 Now you should be able to go to http://localhost:3000/safety_cone and manage your routes.
-
-
-SafetyCone uses flash messages. It is expected that flash messages are rendered on all views.
-
 
 ## For version 0.1.0 users
 

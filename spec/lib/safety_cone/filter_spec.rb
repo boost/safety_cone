@@ -40,7 +40,7 @@ module SafetyCone
 
         expect(SafetyCone).to receive(:cones)
 
-        controller_instance.fetch_cone
+        controller_instance.send(:fetch_cone)
       end
     end
 
