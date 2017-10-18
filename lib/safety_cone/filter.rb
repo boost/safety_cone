@@ -34,8 +34,8 @@ module SafetyCone
 
       cone = Cone.new(key, cone)
       cone.fetch
-      
-      %w(notice block).include?(cone.measure) ? cone : false
+
+      %w[notice block].include?(cone.measure) ? cone : false
     end
 
     # Method to redirect a request

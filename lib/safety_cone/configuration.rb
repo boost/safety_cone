@@ -1,10 +1,7 @@
 module SafetyCone
   # Module for configuring safety measures
   module Configuration
-    VALID_OPTION_KEYS = [
-      :method, :controller,
-      :action, :name
-    ].freeze
+    VALID_OPTION_KEYS = %i[method controller action name].freeze
 
     attr_accessor :cones, :options, :redis, :auth
 
@@ -32,7 +29,7 @@ module SafetyCone
     # Configuration method for Rails initializer
     def configure
       self.cones = {}
-      self.auth = { username: nil, password: nil}
+      self.auth = { username: nil, password: nil }
 
       yield self
     end
