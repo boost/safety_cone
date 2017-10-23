@@ -63,7 +63,7 @@ end
 
 In View
 
-``` 
+```html
 <div class="container">
   <% if safetycone_notice %>
     <div class="notice"><%= safetycone_notice %></div>
