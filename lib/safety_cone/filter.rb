@@ -12,9 +12,13 @@ module SafetyCone
     # based on the configuration.
     def safety_cone_filter
       if cone = fetch_cone
-        flash[:safetycone_notice] = flash[:safetycone_alert] = nil
-        flash["safetycone_#{notice_type(cone.measure)}"] = cone.message
-        redirect_to safety_redirect if cone.measure == 'block'
+        if cone.type == 'notice'
+          flash.now["safetycone_#{notice_type(cone.type)}"] = cone.message
+        else
+          flash["safetycone_#{notice_type(cone.type)}"] = cone.message
+        end
+
+        redirect_to safety_redirect if cone.type == 'block'
       end
     end
 
@@ -35,7 +39,7 @@ module SafetyCone
       cone = Cone.new(key, cone)
       cone.fetch
 
-      %w[notice block].include?(cone.measure) ? cone : false
+      %w[notice block].include?(cone.type) ? cone : false
     end
 
     # Method to redirect a request
@@ -44,8 +48,8 @@ module SafetyCone
     end
 
     # Returns type of notice
-    def notice_type(measure)
-      measure == 'notice' ? 'notice' : 'alert'
+    def notice_type(type)
+      type == 'notice' ? 'notice' : 'alert'
     end
 
     # Returns the current request action as a symbol

@@ -90,15 +90,15 @@ SafetyCone.configure do |config|
   config.add(
     method: :POST,
     message: 'We are unable to write any data to database now.',
-    measure: :block
+    type: :block
   )
 
-  # This is a controller action specific warning. But with no measures to prevent this action
+  # This is a controller action specific warning. But with no types to prevent this action
   config.add(
     controller: :users,
     action: :new,
     message: 'We are unable to register any user now. Please try after sometime.'
-    measure: :notice
+    type: :notice
   )
 
   # This is a controller action specific block. This config will let the application
@@ -107,7 +107,7 @@ SafetyCone.configure do |config|
     controller: 'users',
     action: 'create',
     message: 'We are unable to register any user now. Please try after sometime.',
-    measure: :block
+    type: :block
   )
 
   # This is a controller action specific block with a redirect configured.
@@ -115,7 +115,7 @@ SafetyCone.configure do |config|
     controller: 'users',
     action: 'create',
     message: 'We are unable to register any user now. Please try after sometime.',
-    measure: :block,
+    type: :block,
     redirect: '/page/more_info'
   )
 
