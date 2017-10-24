@@ -47,7 +47,7 @@ end
 In routes add
 
 ```
-  mount SafetyCone::Engine, :at => '/safety_cone'
+  mount SafetyCone::Engine, :as => '/safety_cone'
 ```
 
 In ApplicationController
