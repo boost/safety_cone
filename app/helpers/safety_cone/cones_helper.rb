@@ -3,7 +3,7 @@ module SafetyCone
     def status(key)
       cone = Cone.new(key, {})
       cone.fetch
-      cone.measure
+      cone.type
     end
   end
 end

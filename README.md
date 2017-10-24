@@ -61,11 +61,21 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+In View
+
+```html
+<div class="container">
+  <% if safetycone_notice %>
+    <div class="notice"><%= safetycone_notice %></div>
+  <% end %>
+ 
+   <% if safetycone_alert %>
+    <div class="alert"><%= safetycone_alert %></div>
+  <% end %> 
+</div>
+```
+
 Now you should be able to go to http://localhost:3000/safety_cone and manage your routes.
-
-
-SafetyCone uses flash messages. It is expected that flash messages are rendered on all views.
-
 
 ## For version 0.1.0 users
 
@@ -80,15 +90,15 @@ SafetyCone.configure do |config|
   config.add(
     method: :POST,
     message: 'We are unable to write any data to database now.',
-    measure: :block
+    type: :block
   )
 
-  # This is a controller action specific warning. But with no measures to prevent this action
+  # This is a controller action specific warning. But with no types to prevent this action
   config.add(
     controller: :users,
     action: :new,
     message: 'We are unable to register any user now. Please try after sometime.'
-    measure: :notice
+    type: :notice
   )
 
   # This is a controller action specific block. This config will let the application
@@ -97,7 +107,7 @@ SafetyCone.configure do |config|
     controller: 'users',
     action: 'create',
     message: 'We are unable to register any user now. Please try after sometime.',
-    measure: :block
+    type: :block
   )
 
   # This is a controller action specific block with a redirect configured.
@@ -105,7 +115,7 @@ SafetyCone.configure do |config|
     controller: 'users',
     action: 'create',
     message: 'We are unable to register any user now. Please try after sometime.',
-    measure: :block,
+    type: :block,
     redirect: '/page/more_info'
   )
 

@@ -1,7 +1,7 @@
 module SafetyCone
   class Cone
     attr_accessor :name, :controller, :action,
-                  :method, :message, :measure,
+                  :method, :message, :type,
                   :key, :redis
 
     def initialize(key, params)
@@ -11,12 +11,12 @@ module SafetyCone
       @method = params[:action]
       @method = params[:method]
       @message = params[:message]
-      @measure = params[:measure] || 'disabled'
+      @type = params[:type] || 'disabled'
       @redis = SafetyCone.redis
     end
 
     def save
-      data = { message: @message, measure: @measure }.to_json
+      data = { message: @message, type: @type }.to_json
       @redis.set(redis_key, data)
     end
 
@@ -26,7 +26,7 @@ module SafetyCone
       if stored_data
         data = JSON.parse(stored_data)
         @message = data['message']
-        @measure = data['measure']
+        @type = data['type']
       end
     end
 

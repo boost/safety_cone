@@ -11,7 +11,7 @@ feature  'Edit page' do
         action: :index,
         message: 'This is the flash message with SafetyCone for the home Page',
         name: 'EditPage',
-        measure: 'notice',
+        type: 'notice',
         redis: $redis,
         keys: '1234'
       )
@@ -40,9 +40,9 @@ feature  'Edit page' do
     within 'form' do
       expect(page).to have_selector('.input-field');
       expect(page).to have_selector('.input-label');
-      expect(page).to have_selector('#cone_measure_notice');
-      expect(page).to have_selector('#cone_measure_block');
-      expect(page).to have_selector('#cone_measure_disabled');
+      expect(page).to have_selector('#cone_type_notice');
+      expect(page).to have_selector('#cone_type_block');
+      expect(page).to have_selector('#cone_type_disabled');
       expect(page).to have_selector('.waves-light.btn');
       expect(page).to have_selector('.waves-light.btn.grey');
     end

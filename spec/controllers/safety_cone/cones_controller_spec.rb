@@ -46,7 +46,7 @@ module SafetyCone
             action: :edit,
             message: 'This is the flash message with SafetyCone for the home Page',
             name: 'editPage',
-            measure: 'notice',
+            type: 'notice',
             redis: $redis,
             keys: '1234'
           )

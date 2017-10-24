@@ -11,7 +11,7 @@ feature  'Home page' do
         action: :index,
         message: 'This is the flash message with SafetyCone for the home Page',
         name: 'HomePage',
-        measure: 'notice',
+        type: 'notice',
         redis: $redis
       )
       config.redis = $redis
