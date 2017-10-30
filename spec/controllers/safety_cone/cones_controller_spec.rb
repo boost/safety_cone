@@ -28,11 +28,11 @@ module SafetyCone
       end
 
       it 'should renter with correct responsed' do
-        expect(SafetyCone.cones).to eq( { home_index: {
+        expect(SafetyCone.cones).to eq(home_index: {
           controller: :home,
           action: :index,
           message: 'This is the flash message with SafetyCone for the home Page',
-          name: 'HomePage'} })
+          name: 'HomePage' })
       end
     end
 
@@ -54,7 +54,7 @@ module SafetyCone
           config.auth = { username: 'admin', password: 'password' }
         end
         @cones = SafetyCone.cones
-        get :edit, { id: 'home_edit' }
+        get :edit, id: 'home_edit'
       }
 
       it 'response status 200' do

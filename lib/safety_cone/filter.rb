@@ -24,42 +24,42 @@ module SafetyCone
 
     private
 
-    # Fetches a configuration based on current request
-    def fetch_cone
-      cones = SafetyCone.cones
+      # Fetches a configuration based on current request
+      def fetch_cone
+        cones = SafetyCone.cones
 
-      if cone = cones[request_action]
-        key = request_action
-      elsif cone = cones[request_method]
-        key = request_method
-      else
-        return false
+        if cone = cones[request_action]
+          key = request_action
+        elsif cone = cones[request_method]
+          key = request_method
+        else
+          return false
+        end
+
+        cone = Cone.new(key, cone)
+        cone.fetch
+
+        %w[notice block].include?(cone.type) ? cone : false
       end
 
-      cone = Cone.new(key, cone)
-      cone.fetch
+      # Method to redirect a request
+      def safety_redirect
+        request.env['HTTP_REFERER'] || root_path
+      end
 
-      %w[notice block].include?(cone.type) ? cone : false
-    end
+      # Returns type of notice
+      def notice_type(type)
+        type == 'notice' ? 'notice' : 'alert'
+      end
 
-    # Method to redirect a request
-    def safety_redirect
-      request.env['HTTP_REFERER'] || root_path
-    end
+      # Returns the current request action as a symbol
+      def request_method
+        request.method.to_sym
+      end
 
-    # Returns type of notice
-    def notice_type(type)
-      type == 'notice' ? 'notice' : 'alert'
-    end
-
-    # Returns the current request action as a symbol
-    def request_method
-      request.method.to_sym
-    end
-
-    # Returns the current controller_action as a symbol
-    def request_action
-      "#{controller_name}_#{action_name}".to_sym
-    end
+      # Returns the current controller_action as a symbol
+      def request_action
+        "#{controller_name}_#{action_name}".to_sym
+      end
   end
 end

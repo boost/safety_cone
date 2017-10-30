@@ -4,7 +4,7 @@ class ControllerClass < ActionController::Base
   include SafetyCone::Filter
 end
 
-class RedisMock 
+class RedisMock
   def get(key); end
 end
 
