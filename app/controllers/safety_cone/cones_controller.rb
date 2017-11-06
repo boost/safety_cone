@@ -8,18 +8,18 @@ module SafetyCone
     end
 
     def index
-      @cones = SafetyCone.cones
+      @paths = SafetyCone.paths
     end
 
     def edit
-      cone = SafetyCone.cones[params[:id].to_sym]
-      @cone = Cone.new(params[:id], cone)
-      @cone.fetch
+      path = SafetyCone.paths[params[:id].to_sym]
+      @path = Cone.new(params[:id], path)
+      @path.fetch
     end
 
     def update
-      cone = SafetyCone.cones[params[:id].to_sym]
-      mereged_params = cone.merge(params[:cone].symbolize_keys)
+      path = SafetyCone.paths[params[:id].to_sym]
+      mereged_params = path.merge(params[:path].symbolize_keys)
       Cone.new(params[:id], mereged_params).save
 
       redirect_to cones_path

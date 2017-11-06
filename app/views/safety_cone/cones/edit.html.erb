@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col s6 offset-s3">
-    <h6 class="center"><%= @cone.name %></h6>
+    <h6 class="center"><%= @path.name %></h6>
 
     <div class="card">
-      <%= form_for :cone, url: cone_path(@cone.key), method: :PUT do |form| %>
+      <%= form_for :path, url: cone_path(@path.key), method: :PUT do |form| %>
         <div class="row ">
           <div class="input-field group col s12">
             <%= form.text_field :message %>
