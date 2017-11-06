@@ -296,3 +296,7 @@ background-color: #26a69a;
 box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
 color: red!Important;
 }
+
+.red {
+  background-color: #D52618 !important;
+}

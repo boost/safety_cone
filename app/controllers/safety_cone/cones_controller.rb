@@ -9,6 +9,7 @@ module SafetyCone
 
     def index
       @paths = SafetyCone.paths
+      @features = SafetyCone.features
     end
 
     def edit

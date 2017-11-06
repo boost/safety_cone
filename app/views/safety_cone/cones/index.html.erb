@@ -29,8 +29,33 @@
     <br>
     <strong>Features</strong>
     <hr />
+    <% @features.each_with_index do |feature, index| %>
 
-    Under Construction
+      <div class="row">
+        <div class="col s6">
+          <%= feature[:name] %>
+        </div>
 
+        <% if feature_status(feature[:feature]) %>
+          <div class="col s3">
+            <div class="chip status %>">on</div>
+          </div>
+
+          <div class="col s3">
+            <%= button_to 'Block', feature_path(index, params: { state: 0 }),
+                          method: :patch, class: 'waves-effect waves-light btn red'%>
+          </div>
+        <% else %>
+          <div class="col s3">
+            <div class="chip status-block %>">off</div>
+          </div>
+
+          <div class="col s3">
+            <%= button_to 'Unblock', feature_path(index, params: { state: 1 }),
+                          method: :patch, class: 'waves-effect waves-light btn'%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

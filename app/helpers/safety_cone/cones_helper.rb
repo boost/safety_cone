@@ -5,5 +5,15 @@ module SafetyCone
       cone.fetch
       cone.type
     end
+
+    def feature_status(key)
+      redis = SafetyCone.redis
+      redis_key = "safety::cone::#{key}"
+      value = redis.get(redis_key)
+
+      return false unless value
+
+      value == '1'
+    end
   end
 end
