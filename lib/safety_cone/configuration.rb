@@ -3,7 +3,7 @@ module SafetyCone
   module Configuration
     VALID_OPTION_KEYS = %i[method controller action name].freeze
 
-    attr_accessor :cones, :options, :redis, :auth, :paths, :features
+    attr_accessor :options, :redis, :auth, :paths, :features
 
     # Method add a route or method to be managed by safety cone
     def add(options = {})
@@ -12,7 +12,7 @@ module SafetyCone
       raise(ArgumentError, 'Mandatory param :name missing') unless options[:name]
 
       if options[:feature]
-        features << options
+        SafetyCone::ViewHelpers.add_method(options[:feature])
       else
         paths[make_key] = options
       end
@@ -32,7 +32,7 @@ module SafetyCone
 
     # Configuration method for Rails initializer
     def configure
-      self.cones = {}
+      # self.cones = {}
       self.paths = {}
       self.features = []
       self.auth = { username: nil, password: nil }
