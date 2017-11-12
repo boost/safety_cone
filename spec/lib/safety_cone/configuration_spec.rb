@@ -28,9 +28,9 @@ module SafetyCone
         end
 
         it 'returns the path which was added' do
-          expect(SafetyCone.paths).to eq ({ static_pages_home: { 
-                                                     controller: :static_pages, 
-                                                     action: :home, name: 'Home Page' } 
+          expect(SafetyCone.paths).to eq ({ static_pages_home: {
+                                                     controller: :static_pages,
+                                                     action: :home, name: 'Home Page' }
                                                    })
         end
 
