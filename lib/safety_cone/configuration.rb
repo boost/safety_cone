@@ -1,8 +1,6 @@
 module SafetyCone
   # Module for configuring safety measures
   module Configuration
-    VALID_OPTION_KEYS = %i[method controller action name].freeze
-
     attr_accessor :options, :redis, :auth, :paths, :features
 
     # Method add a route or method to be managed by safety cone

@@ -3,11 +3,13 @@ require 'spec_helper'
 # Specs for SafetyCone::Configuration
 module SafetyCone
   describe Configuration do
+    let(:conf) { Class.new { extend SafetyCone::Configuration } }
 
-    context 'Constants' do
-      it 'has set valid option keys' do
-        expect(SafetyCone::Configuration::VALID_OPTION_KEYS).to eq [:method, :controller,
-                                                                             :action, :name]
+    describe '#add' do
+      it 'sets view helper' do
+        expect(SafetyCone::ViewHelpers).to receive(:add_method).with(:foo)
+
+        SafetyCone.configure { |config| config.add(feature: :foo, name: 'foo') }
       end
     end
 
