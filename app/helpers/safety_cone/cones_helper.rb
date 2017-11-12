@@ -1,7 +1,7 @@
 module SafetyCone
   module ConesHelper
     def status(key)
-      cone = Cone.new(key, {})
+      cone = Path.new(key, {})
       cone.fetch
       cone.type
     end

@@ -36,7 +36,7 @@ module SafetyCone
         return false
       end
 
-      path = Cone.new(key, path)
+      path = Path.new(key, path)
       path.fetch
 
       %w[notice block].include?(path.type) ? path : false

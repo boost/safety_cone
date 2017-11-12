@@ -20,14 +20,23 @@ module SafetyCone
               action: :home,
               name: 'Home Page'
             )
+            config.add(
+              feature: :shopping_cart,
+              name: 'Shopping Cart'
+            )
           end
         end
 
-        it 'Have created a cone entry' do
-          expect(SafetyCone.cones).to eq ({ static_pages_home: { 
+        it 'returns the path which was added' do
+          expect(SafetyCone.paths).to eq ({ static_pages_home: { 
                                                      controller: :static_pages, 
                                                      action: :home, name: 'Home Page' } 
                                                    })
+        end
+
+        it 'returns the features that was added' do
+          expect(SafetyCone.features).to eq([{ feature: :shopping_cart,
+                                               name: 'Shopping Cart' }])
         end
       end
 

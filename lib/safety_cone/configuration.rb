@@ -12,6 +12,7 @@ module SafetyCone
       raise(ArgumentError, 'Mandatory param :name missing') unless options[:name]
 
       if options[:feature]
+        features << options
         SafetyCone::ViewHelpers.add_method(options[:feature])
       else
         paths[make_key] = options
@@ -32,7 +33,6 @@ module SafetyCone
 
     # Configuration method for Rails initializer
     def configure
-      # self.cones = {}
       self.paths = {}
       self.features = []
       self.auth = { username: nil, password: nil }

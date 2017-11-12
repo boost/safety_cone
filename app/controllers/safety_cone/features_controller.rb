@@ -14,11 +14,6 @@ module SafetyCone
       redis_key = "safety::cone::#{feature[:feature]}"
       redis.set(redis_key, params[:state])
 
-      # binding.pry
-      # feature = SafetyCone.features[params[:id]]
-      # mereged_params = path.merge(params[:path].symbolize_keys)
-      # Cone.new(params[:id], mereged_params).save
-
       redirect_to cones_path
     end
   end

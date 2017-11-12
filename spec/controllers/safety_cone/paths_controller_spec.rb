@@ -1,35 +1,39 @@
 require 'rails_helper'
 
 module SafetyCone
-  RSpec.describe ConesController, type: :controller do
+  RSpec.describe PathsController, type: :controller do
 
     routes { SafetyCone::Engine.routes }
-    describe '#index' do
+
+    describe '#edit' do
       before {
+        $redis = MockRedis.new
+        $redis.set('safety_cone', 'home_edit')
         SafetyCone.configure do |config|
           config.add(
             controller: :home,
-            action: :index,
+            action: :edit,
             message: 'This is the flash message with SafetyCone for the home Page',
-            name: 'HomePage',
+            name: 'editPage',
+            type: 'notice',
+            redis: $redis,
+            keys: '1234'
           )
-          config.add(
-            feature: :shopping_cart,
-            name: 'Shopping Cart'
-          )
+          config.redis = $redis
           config.auth = { username: 'admin', password: 'password' }
         end
 
         @paths = SafetyCone.paths
-        get :index
+
+        get :edit, { id: 'home_edit' }
       }
 
       it 'response status 200' do
         expect(response).to have_http_status(200)
       end
 
-      it 'render :index template' do
-        expect(response).to render_template :index
+      it 'render :edit template' do
+        expect(response).to render_template :edit
       end
     end
   end
