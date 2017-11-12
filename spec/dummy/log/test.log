@@ -6199,3 +6199,94 @@ Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
   [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (0)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", 2017-11-12 02:00:58 UTC], ["updated_at", 2017-11-12 02:00:58 UTC]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.2ms)[0m  [1m[36mbegin transaction[0m
+Processing by SafetyCone::PathsController#edit as HTML
+  Parameters: {"id"=>"home_edit"}
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/paths/edit.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/paths/edit.html.erb within layouts/safety_cone/application (0.4ms)
+Completed 200 OK in 40ms (Views: 28.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by SafetyCone::PathsController#edit as HTML
+  Parameters: {"id"=>"home_edit"}
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/paths/edit.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/paths/edit.html.erb within layouts/safety_cone/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+Processing by SafetyCone::ConesController#index as HTML
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application (0.2ms)
+Completed 200 OK in 23ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by SafetyCone::ConesController#index as HTML
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by SafetyCone::ConesController#index as HTML
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application (23.0ms)
+Completed 200 OK in 790ms (Views: 784.6ms | ActiveRecord: 0.0ms)
+Processing by SafetyCone::PathsController#edit as HTML
+  Parameters: {"id"=>"home_index"}
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/paths/edit.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/paths/edit.html.erb within layouts/safety_cone/application (30.4ms)
+Completed 200 OK in 60ms (Views: 53.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+Processing by SafetyCone::ConesController#index as HTML
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application (0.8ms)
+Completed 200 OK in 29ms (Views: 28.8ms | ActiveRecord: 0.0ms)
+Processing by SafetyCone::PathsController#edit as HTML
+  Parameters: {"id"=>"home_index"}
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/paths/edit.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/paths/edit.html.erb within layouts/safety_cone/application (1.6ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by SafetyCone::ConesController#index as HTML
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application (2.0ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by SafetyCone::ConesController#index as HTML
+  Rendering /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application
+  Rendered /Users/edwin/Git/rNd/safety_cone/app/views/safety_cone/cones/index.html.erb within layouts/safety_cone/application (0.9ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m

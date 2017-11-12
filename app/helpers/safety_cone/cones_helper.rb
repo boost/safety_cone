@@ -1,5 +1,7 @@
 module SafetyCone
   module ConesHelper
+    include ViewHelpers
+
     def status(key)
       cone = Path.new(key, {})
       cone.fetch
@@ -7,13 +9,7 @@ module SafetyCone
     end
 
     def feature_status(key)
-      redis = SafetyCone.redis
-      redis_key = "safety::cone::#{key}"
-      value = redis.get(redis_key)
-
-      return false unless value
-
-      value == '1'
+      feature?(key)
     end
   end
 end

@@ -10,18 +10,18 @@ module SafetyCone
       flash[:safetycone_alert]
     end
 
-    def safetycone_feature?(name)
+    def feature?(name)
       redis = SafetyCone.redis
       redis_key = "safety::cone::#{name}"
       value = redis.get(redis_key)
 
-      return false unless value
+      return true unless value
 
       value == '1'
     end
 
     def self.add_method(name)
-      define_method("#{name}?") { safetycone_feature?(name) }
+      define_method("#{name}?") { feature?(name) }
     end
   end
 end
