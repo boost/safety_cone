@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature  'Home page' do
-  background {
+feature 'Home page' do
+  background do
     $redis = MockRedis.new
     $redis.set('safety_cone', 'home_index')
 
@@ -17,7 +17,7 @@ feature  'Home page' do
       config.redis = $redis
       config.auth = { username: 'admin', password: 'password' }
     end
-  }
+  end
 
   scenario 'header text' do
     @paths = SafetyCone.paths

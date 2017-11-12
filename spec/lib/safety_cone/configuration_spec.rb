@@ -42,16 +42,16 @@ module SafetyCone
 
       context 'Exceptions' do
         it 'will raise an error for name missing' do
-          expect{SafetyCone.configure {|config| config.add() }}.to raise_error('Mandatory param :name missing')
+          expect { SafetyCone.configure { |config| config.add() } }.to raise_error('Mandatory param :name missing')
         end
 
         it 'will raise an error if controller and action not passed' do
-          expect{SafetyCone.configure {|config| config.add(name: 'Page') }}.to raise_error('Options should contain :controller and :action or :method.')
+          expect { SafetyCone.configure { |config| config.add(name: 'Page') } }.to raise_error('Options should contain :controller and :action or :method.')
         end
 
         it 'will raise an error for invalid measures' do
-          expect{SafetyCone.configure {|config| config.add(name: 'Page', action: :posts) }}.to raise_error('Options should contain :controller and :action or :method.')
-        end                      
+          expect { SafetyCone.configure { |config| config.add(name: 'Page', action: :posts) } }.to raise_error('Options should contain :controller and :action or :method.')
+        end
       end
     end
   end
