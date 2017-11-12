@@ -8,3 +8,5 @@ test/dummy/tmp/**
 test/dummy/tmp/
 spec/dummy/tmp/**
 spec/dummy/tmp/
+spec/dummy/db/*.sqlite3
+spec/dummy/log/*.log
