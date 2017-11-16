@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col s6 offset-s3">
+    <br>
+    <strong>Paths</strong>
     <hr />
-    <% @cones.each do |cone, options| %>
+    <% SafetyCone.paths.each do |cone, options| %>
 
       <div class="row">
         <div class="col s6">
@@ -15,10 +17,45 @@
         </div>
 
         <div class="col s3">
-          <%= link_to 'edit', edit_cone_path(cone), class: 'waves-effect waves-light btn' %>
+          <%= link_to 'edit', edit_path_path(cone), class: 'waves-effect waves-light btn' %>
         </div>
       </div>
     <% end %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col s6 offset-s3">
+    <br>
+    <strong>Features</strong>
+    <hr />
+    <% SafetyCone.features.each_with_index do |feature, index| %>
+
+      <div class="row">
+        <div class="col s6">
+          <%= feature[:name] %>
+        </div>
+
+        <% if feature_status(feature[:feature]) %>
+          <div class="col s3">
+            <div class="chip status %>">on</div>
+          </div>
+
+          <div class="col s3">
+            <%= button_to 'Block', feature_path(index, params: { state: 0 }),
+                          method: :patch, class: 'waves-effect waves-light btn red'%>
+          </div>
+        <% else %>
+          <div class="col s3">
+            <div class="chip status-block %>">off</div>
+          </div>
+
+          <div class="col s3">
+            <%= button_to 'Unblock', feature_path(index, params: { state: 1 }),
+                          method: :patch, class: 'waves-effect waves-light btn'%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

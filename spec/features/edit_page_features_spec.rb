@@ -21,7 +21,7 @@ feature  'Edit page' do
   end
 
   scenario 'header text' do
-    @cones = SafetyCone.cones
+    @paths = SafetyCone.paths
     visit root_path
 
     find('.btn', text: 'edit').click
@@ -32,7 +32,7 @@ feature  'Edit page' do
   end
 
   scenario 'has edit form' do
-    @cones = SafetyCone.cones
+    @paths = SafetyCone.paths
     visit root_path
 
     find('.btn', text: 'edit').click
@@ -40,9 +40,9 @@ feature  'Edit page' do
     within 'form' do
       expect(page).to have_selector('.input-field');
       expect(page).to have_selector('.input-label');
-      expect(page).to have_selector('#cone_type_notice');
-      expect(page).to have_selector('#cone_type_block');
-      expect(page).to have_selector('#cone_type_disabled');
+      expect(page).to have_selector('#path_type_notice');
+      expect(page).to have_selector('#path_type_block');
+      expect(page).to have_selector('#path_type_disabled');
       expect(page).to have_selector('.waves-light.btn');
       expect(page).to have_selector('.waves-light.btn.grey');
     end

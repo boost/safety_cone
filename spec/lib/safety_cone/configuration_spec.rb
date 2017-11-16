@@ -3,11 +3,13 @@ require 'spec_helper'
 # Specs for SafetyCone::Configuration
 module SafetyCone
   describe Configuration do
+    let(:conf) { Class.new { extend SafetyCone::Configuration } }
 
-    context 'Constants' do
-      it 'has set valid option keys' do
-        expect(SafetyCone::Configuration::VALID_OPTION_KEYS).to eq [:method, :controller,
-                                                                             :action, :name]
+    describe '#add' do
+      it 'sets view helper' do
+        expect(SafetyCone::ViewHelpers).to receive(:add_method).with(:foo)
+
+        SafetyCone.configure { |config| config.add(feature: :foo, name: 'foo') }
       end
     end
 
@@ -20,14 +22,23 @@ module SafetyCone
               action: :home,
               name: 'Home Page'
             )
+            config.add(
+              feature: :shopping_cart,
+              name: 'Shopping Cart'
+            )
           end
         end
 
-        it 'Have created a cone entry' do
-          expect(SafetyCone.cones).to eq ({ static_pages_home: {
+        it 'returns the path which was added' do
+          expect(SafetyCone.paths).to eq ({ static_pages_home: {
                                                      controller: :static_pages,
                                                      action: :home, name: 'Home Page' }
                                                    })
+        end
+
+        it 'returns the features that was added' do
+          expect(SafetyCone.features).to eq([{ feature: :shopping_cart,
+                                               name: 'Shopping Cart' }])
         end
       end
 
