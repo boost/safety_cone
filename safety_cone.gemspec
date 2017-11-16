@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = 'safety_cone'
   s.version     = SafetyCone::VERSION
 
-  s.authors     = ['Boost', 'Edwin Rozario', 'Yar Htut']
+  s.authors     = ['Boost', 'Edwin Rozario', 'yhtut']
   s.email       = ['info@boost.co.nz']
   s.homepage    = 'https://github.com/boost/safety_cone'
   s.summary     = 'Blocks or warns requests as cofigured by the admin'

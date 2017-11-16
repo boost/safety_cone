@@ -41,6 +41,15 @@ SafetyCone.configure do |config|
     method: 'POST',
     name: 'All POST requests'
   )
+
+  # Feature flipper
+  config.add(
+    feature: :record_search,
+    name: 'Search'
+  )
+
+  # This config will provide a view helper record_search?
+  # Which can be used in the view to display a div or not
 end
 ```
 
@@ -71,7 +80,12 @@ In View
  
    <% if safetycone_alert %>
     <div class="alert"><%= safetycone_alert %></div>
-  <% end %> 
+  <% end %>
+
+  <!-- Feature Flipper -->
+  <% if record_search? %>
+    <div>Search Records</div>
+  <% end %>
 </div>
 ```
 
