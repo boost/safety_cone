@@ -1,5 +1,5 @@
 module SafetyCone
-  class Cone
+  class Path
     attr_accessor :name, :controller, :action,
                   :method, :message, :type,
                   :key, :redis

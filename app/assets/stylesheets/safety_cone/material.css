@@ -19,16 +19,26 @@ body {
 .header {
   display: grid;
   width: 60rem;
+  grid-template-columns: 1fr 10fr 1fr;
   border-bottom: 1px solid #aaaaaa;
   margin-bottom: 2rem;
 }
 
 .header .logo {
-  margin-top: 2rem;
+  margin-top: 1rem;
   justify-self: center;
 }
 
 .grid {
+  display: grid;
+  width: 60rem;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+.bottom-grid {
   display: grid;
   width: 60rem;
   grid-template-columns: 2fr 1fr 1fr;
@@ -77,9 +87,9 @@ body {
   background-color: #FF8A65 !important;
 }
 
-h2 {
-  font-size: 2.28rem;
-  text-align: center;
+h3 {
+  font-size: 1.86rem;
+  margin-left: 2rem;
 }
 
 h6 {
@@ -124,8 +134,20 @@ h6 {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
+.btn.expand {
+  width: 100%;
+}
+
+.btn.back {
+  align-self: center;
+}
+
 .grey {
   background: #DCDCDC;
+}
+
+.dark-grey {
+  background: #AAAAAA;
 }
 
 .grey:hover {
@@ -268,4 +290,8 @@ input[type="radio"]:not(:checked),
 [type="radio"].tabbed:focus + label:before {
   box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
   color: red!Important;
+}
+
+.red {
+  background-color: #D52618 !important;
 }

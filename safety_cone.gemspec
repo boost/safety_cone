@@ -7,12 +7,14 @@ require 'safety_cone/version'
 Gem::Specification.new do |s|
   s.name        = 'safety_cone'
   s.version     = SafetyCone::VERSION
-  s.authors     = ['Boost']
+
+  s.authors     = ['Boost', 'Edwin Rozario', 'Yar Htut']
   s.email       = ['info@boost.co.nz']
   s.homepage    = 'https://github.com/boost/safety_cone'
   s.summary     = 'Blocks or warns requests as cofigured by the admin'
   s.description = 'At times we would want to block certain requests.
-                   SafetyCone allows this to be controller from an interface.'
+                   SafetyCone allows this to be controlled from an interface.
+                   It also provides a feature flipper for the views.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']

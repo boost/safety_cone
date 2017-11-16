@@ -7,12 +7,11 @@
 <body>
   <div class='wrapper'>
     <div class='header'>
-      <%= image_tag('safety_cone/logo.png', size: '80x80', class: 'logo') %>
-      <h2>Safety Cone</h2>
+      <%= image_tag('safety_cone/logo.png', size: '60x60', class: 'logo') %>
+      <h3>Safety Cone</h3>
+      <%= link_to 'home', '/', class: 'btn back dark-grey' %>
     </div>
-    <div class='grid'>
-      <%= yield %>
-    </div>
+    <%= yield %>
   </div>
 </body>
 </html>

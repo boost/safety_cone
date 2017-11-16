@@ -20,22 +20,22 @@ feature 'Home page' do
   end
 
   scenario 'header text' do
-    @cones = SafetyCone.cones
+    @paths = SafetyCone.paths
     visit root_path
     within '.s4' do
-      expect(page).to have_text('Safety Cone');
+      expect(page).to have_text('Safety Cone')
     end
+
+    expect(page).to have_text('Paths')
+    expect(page).to have_text('Features')
   end
 
   scenario 'page have all the element' do
-    @cones = SafetyCone.cones
+    @paths = SafetyCone.paths
     visit root_path
 
-    within '.s6.offset-s3' do
-      expect(page).to have_selector('.waves-light.btn')
-      expect(page).to have_text('HomePage');
-      expect(page).to have_text('edit');
-    end
+    expect(page).to have_selector('.waves-light.btn')
+    expect(page).to have_text('HomePage')
+    expect(page).to have_text('edit')
   end
-
 end

@@ -1,9 +1,35 @@
-<% @cones.each do |cone, options| %>
+
+<!-- Paths list -->
+<h4>Requests</h4>
+<div class='grid'>
+<% SafetyCone.paths.each do |cone, options| %>
   <%= options[:name] %>
 
   <span class="chip status-<%= status(cone) %>">
     <%= status(cone) %>
   </span>
 
-  <%= link_to 'edit', edit_cone_path(cone), class: 'waves-effect waves-light btn' %>
+  <%= link_to 'edit', edit_path_path(cone), class: 'waves-effect waves-light btn' %>
 <% end %>
+</div>
+
+<!-- Features list -->
+<h4>Features</h4>
+<div class='grid'>
+  <% SafetyCone.features.each_with_index do |feature, index| %>
+     <%= feature[:name] %>
+
+    <% if feature_status(feature[:feature]) %>
+
+       <div class="chip status">on</div>
+
+       <%= button_to 'Block', feature_path(index, params: { state: 0 }),
+                            method: :patch, class: 'waves-effect waves-light btn expand red'%>
+    <% else %>
+      <div class="chip status-block">off</div>
+
+      <%= button_to 'Unblock', feature_path(index, params: { state: 1 }),
+                            method: :patch, class: 'waves-effect waves-light btn expand'%>
+    <% end %>
+  <%end%>
+</div>

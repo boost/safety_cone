@@ -26,20 +26,20 @@ module SafetyCone
 
       # Fetches a configuration based on current request
       def fetch_cone
-        cones = SafetyCone.cones
+        paths = SafetyCone.paths
 
-        if cone = cones[request_action]
+        if path = paths[request_action]
           key = request_action
-        elsif cone = cones[request_method]
+        elsif cone = paths[request_method]
           key = request_method
         else
           return false
         end
 
-        cone = Cone.new(key, cone)
-        cone.fetch
+        path = Path.new(key, path)
+        path.fetch
 
-        %w[notice block].include?(cone.type) ? cone : false
+        %w[notice block].include?(path.type) ? path : false
       end
 
       # Method to redirect a request
