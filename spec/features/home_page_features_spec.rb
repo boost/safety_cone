@@ -22,11 +22,11 @@ feature 'Home page' do
   scenario 'header text' do
     @paths = SafetyCone.paths
     visit root_path
-    within '.s4' do
+    within '.header' do
       expect(page).to have_text('Safety Cone')
     end
 
-    expect(page).to have_text('Paths')
+    expect(page).to have_text('Requests')
     expect(page).to have_text('Features')
   end
 

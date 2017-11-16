@@ -26,7 +26,7 @@ feature  'Edit page' do
 
     find('.btn', text: 'edit').click
 
-    within '.s4.center' do
+    within '.header' do
       expect(page).to have_text('Safety Cone');
     end
   end

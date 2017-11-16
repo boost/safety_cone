@@ -3,9 +3,56 @@
   They will automatically be included in application.css.
 */
 
+html {
+  font-family: sans-serif;
+}
+
 body {
-  margin-top: 2rem;
   background-color: #e0e0e0;
+}
+
+.wrapper {
+  display: grid;
+  justify-content: center;
+}
+
+.header {
+  display: grid;
+  width: 60rem;
+  grid-template-columns: 1fr 10fr 1fr;
+  border-bottom: 1px solid #aaaaaa;
+  margin-bottom: 2rem;
+}
+
+.header .logo {
+  margin-top: 1rem;
+  justify-self: center;
+}
+
+.grid {
+  display: grid;
+  width: 60rem;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+.bottom-grid {
+  display: grid;
+  width: 60rem;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.col {
+  grid-column: 1/4;
+  grid-row: 1/4;
+}
+
+.form {
+  display: grid;
 }
 
 .card {
@@ -23,7 +70,7 @@ body {
 .card, .btn {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
-.card:hover{
+.card:hover {
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
 
@@ -40,45 +87,16 @@ body {
   background-color: #FF8A65 !important;
 }
 
-html {
-  font-family: sans-serif;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 90%;
-}
-.row .col {
-  float: left;
-  box-sizing: border-box;
-  padding: 0 0.75rem;
-  min-height: 1px;
-}
-h4 {
-  font-size: 2.28rem;
-  line-height: 110%;
-  margin: 1.14rem 0 0.912rem 0;
-    text-align: center;
-}
-
-h5 {
-  font-size: 1.64rem;
-  line-height: 110%;
-  margin: 0.82rem 0 0.656rem 0;
-    text-align: center;
+h3 {
+  font-size: 1.86rem;
+  margin-left: 2rem;
 }
 
 h6 {
   font-size: 1rem;
   line-height: 110%;
   margin: 0.5rem 0 0.4rem 0;
-    text-align: center;
+  text-align: center;
 }
 
 .chip {
@@ -116,46 +134,22 @@ h6 {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.btn:hover {
-  background-color: #2bbbad;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
-}
-
-.row .col.s3 {
-  width: 25%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s6 {
-  width: 50%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s12 {
+.btn.expand {
   width: 100%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
 }
 
-.row .col.offset-s3 {
-  margin-left: 25%;
+.btn.back {
+  align-self: center;
 }
-.row .col.offset-s4 {
-  margin-left: 33.33333333%;
-}
-.row .col.offset-s4 {
-  left: 33.3333333333%;
-}
-
 
 .grey {
   background: #DCDCDC;
 }
+
+.dark-grey {
+  background: #AAAAAA;
+}
+
 .grey:hover {
   background: #BABABA;
 }
@@ -176,6 +170,7 @@ input[type=text] {
   transition: all 0.3s;
   color: white;
 }
+
 .input-field .input-label{
   color: #9e9e9e;
   position: absolute;
@@ -195,6 +190,7 @@ input[type=text]:focus {
   border-bottom: 2px solid #26a69a!important;
   transition: .2s ease-out;
 }
+
 input[type=text]:focus + label	{
   margin-top: -20px!important;
   color: #26a69a!important;
@@ -215,23 +211,22 @@ input[type=text]:focus + label	{
 
 input[type="radio"]:not(:checked),
 [type="radio"]:checked {
-position: absolute;
-left: -9999px;
-opacity: 0;
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
 }
 
 [type="radio"]:not(:checked) + label,
 [type="radio"]:checked + label {
-position: relative;
-padding-left: 35px;
-cursor: pointer;
-display: inline-block;
-height: 25px;
-line-height: 30px;
-font-size: 1rem;
-transition: .28s ease;
-/* webkit (konqueror) browsers */
--webkit-user-select: none;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 30px;
+  font-size: 1rem;
+  transition: .28s ease;
+  -webkit-user-select: none;
   -moz-user-select: none;
    -ms-user-select: none;
        user-select: none;
@@ -239,15 +234,15 @@ transition: .28s ease;
 
 [type="radio"] + label:before,
 [type="radio"] + label:after {
-content: '';
-position: absolute;
-left: 0;
-top: 0;
-margin: 4px;
-width: 16px;
-height: 16px;
-z-index: 0;
-transition: .28s ease;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 4px;
+  width: 16px;
+  height: 16px;
+  z-index: 0;
+  transition: .28s ease;
 }
 
 /* Unchecked styles */
@@ -257,44 +252,44 @@ transition: .28s ease;
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:before,
 [type="radio"].with-gap:checked + label:after {
-border-radius: 50%;
+  border-radius: 50%;
 }
 
 [type="radio"]:not(:checked) + label:before,
 [type="radio"]:not(:checked) + label:after {
-border: 2px solid #5a5a5a;
+  border: 2px solid #5a5a5a;
 }
 
 [type="radio"]:not(:checked) + label:after {
--webkit-transform: scale(0);
-       transform: scale(0);
+  -webkit-transform: scale(0);
+  transform: scale(0);
 }
 
 /* Checked styles */
 [type="radio"]:checked + label:before {
-border: 2px solid transparent;
+  border: 2px solid transparent;
 }
 
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:before,
 [type="radio"].with-gap:checked + label:after {
-border: 2px solid #26a69a;
+  border: 2px solid #26a69a;
 }
 
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:after {
-background-color: #26a69a;
+  background-color: #26a69a;
 }
 
 [type="radio"]:checked + label:after {
--webkit-transform: scale(1.02);
-       transform: scale(1.02);
+  -webkit-transform: scale(1.02);
+      transform: scale(1.02);
 }
 
 /* Focused styles */
 [type="radio"].tabbed:focus + label:before {
-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
-color: red!Important;
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+  color: red!Important;
 }
 
 .red {

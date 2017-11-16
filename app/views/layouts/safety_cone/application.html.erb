@@ -2,17 +2,14 @@
 <html>
 <head>
   <title>Safety Cone</title>
-  <%= stylesheet_link_tag "safety_cone/application", media: 'all' %>
+  <%= stylesheet_link_tag 'safety_cone/application', media: 'all' %>
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col s1 offset-s4">
-        <%= image_tag('safety_cone/logo.png', size: "80x80") %>
-      </div>
-      <div class="col s4 center">
-        <h4>Safety Cone</h4>
-      </div>
+  <div class='wrapper'>
+    <div class='header'>
+      <%= image_tag('safety_cone/logo.png', size: '60x60', class: 'logo') %>
+      <h3>Safety Cone</h3>
+      <%= link_to 'home', '/', class: 'btn back dark-grey' %>
     </div>
     <%= yield %>
   </div>
