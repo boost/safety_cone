@@ -1,24 +1,9 @@
-<div class="row">
-  <div class="col s6 offset-s3">
-    <hr />
-    <% @cones.each do |cone, options| %>
+<% @cones.each do |cone, options| %>
+  <%= options[:name] %>
 
-      <div class="row">
-        <div class="col s6">
-          <%= options[:name] %>
-        </div>
+  <span class="chip status-<%= status(cone) %>">
+    <%= status(cone) %>
+  </span>
 
-        <div class="col s3">
-          <div class="chip status-<%= status(cone) %>">
-            <%= status(cone) %>
-          </div>
-        </div>
-
-        <div class="col s3">
-          <%= link_to 'edit', edit_cone_path(cone), class: 'waves-effect waves-light btn' %>
-        </div>
-      </div>
-    <% end %>
-
-  </div>
-</div>
+  <%= link_to 'edit', edit_cone_path(cone), class: 'waves-effect waves-light btn' %>
+<% end %>

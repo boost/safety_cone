@@ -1,33 +1,28 @@
-<div class="row">
-  <div class="col s6 offset-s3">
-    <h6 class="center"><%= @cone.name %></h6>
+<div class='card col'>
+  <h6 class='center'><%= @cone.name %></h6>
+  <%= form_for :cone, url: cone_path(@cone.key), method: :PUT do |form| %>
+    <div class='form'>
+      <div class='input-field'>
+        <%= form.text_field :message %>
+        <%= form.label :message, 'Message', class: 'input-label'%>
+      </div>
 
-    <div class="card">
-      <%= form_for :cone, url: cone_path(@cone.key), method: :PUT do |form| %>
-        <div class="row ">
-          <div class="input-field group col s12">
-            <%= form.text_field :message %>
-            <%= form.label :message, 'Message', class: 'input-label'%>
-          </div>
+      <div class='input-field'>
+        <%= form.radio_button :type, 'notice' %>
+        <%= form.label :type_notice, 'Notice' %>
 
-          <div class="input-field col s12">
-            <%= form.radio_button :type, 'notice' %>
-            <%= form.label :type_notice, 'Notice' %>
+        <%= form.radio_button :type, 'block' %>
+        <%= form.label :type_block, 'Block' %>
 
-            <%= form.radio_button :type, 'block' %>
-            <%= form.label :type_block, 'Block' %>
+        <%= form.radio_button :type, 'disabled' %>
+        <%= form.label :type_disabled, 'Disable this Cone' %>
+      </div>
 
-            <%= form.radio_button :type, 'disabled' %>
-            <%= form.label :type_disabled, 'Disable this Cone' %>
-          </div>
-
-          <div class="input-field col s12">
-            <%= form.submit 'save', class: 'waves-effect waves-light btn' %>
-            <%= link_to 'cancel', cones_path, class: 'waves-effect waves-light btn grey lighten-1' %>
-          </div>
-        </div>
-      <% end  %>
+      <div class='input-field'>
+        <%= form.submit 'save', class: 'waves-effect waves-light btn' %>
+        <%= link_to 'cancel', cones_path, class: 'waves-effect waves-light btn grey lighten-1' %>
+      </div>
     </div>
-
-  </div>
+  <% end  %>
 </div>
+
