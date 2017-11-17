@@ -1,7 +1,7 @@
 ![safety cone logo](https://raw.githubusercontent.com/boost/safety_cone/master/app/assets/images/safety_cone/logo.png)
 #  SafetyCone [![Gem Version](https://badge.fury.io/rb/safety_cone.svg)](https://badge.fury.io/rb/safety_cone)
 
-Safety Cone is a Rails gem that allows you to temporarily add warnings or block requests to specific pages through a simple interface. It's intended use case is primarily for maintenance.
+Safety Cone is a Rails gem that allows you to temporarily add warnings or block requests to specific pages through a simple interface. It also provides a feature flipper.  
 
 ## Installation
 Add this line to your application's Gemfile:
