@@ -5,7 +5,11 @@ module SafetyCone
     # Method to include to base class.
     # This lets declare a before filter here
     def self.included(base)
-      base.before_filter :safety_cone_filter
+      if Rails.version.to_i >= 5
+        base.before_action :safety_cone_filter
+      else
+        base.before_filter :safety_cone_filter
+      end
     end
 
     # Filter method that does the SafetyCone action
