@@ -10,7 +10,7 @@ module SafetyCone
 
     def update
       path = SafetyCone.paths[params[:id].to_sym]
-      mereged_params = path.merge(params[:path].symbolize_keys)
+      mereged_params = path.merge(params[:path].as_json.symbolize_keys)
       Path.new(params[:id], mereged_params).save
 
       redirect_to cones_path
