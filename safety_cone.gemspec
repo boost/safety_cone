@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = 'safety_cone'
   s.version     = SafetyCone::VERSION
 
-  s.authors     = ['Boost', 'Edwin Rozario', 'yhtut']
+  s.authors     = ['Boost', 'Edwin Rozario', 'Gustavo Kazuo Motizuki', 'yhtut']
   s.email       = ['info@boost.co.nz']
   s.homepage    = 'https://github.com/boost/safety_cone'
   s.summary     = 'Blocks or warns requests as cofigured by the admin'
@@ -19,15 +19,15 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '<= 5.1.4'
+  s.add_dependency 'rails', '~> 5.2', '>= 5.2.2'
   s.add_dependency 'redis', '~> 3.3', '>= 3.3.3'
 
   s.add_development_dependency 'sqlite3', '1.3.13'
   s.add_development_dependency 'capybara', '2.14.0'
-  s.add_development_dependency 'factory_girl_rails', '4.8.0'
+  s.add_development_dependency 'factory_bot_rails', '~> 5.0', '>= 5.0.1'
   s.add_development_dependency 'database_cleaner', '1.6.1'
   s.add_development_dependency 'pry', '0.10.4'
-  s.add_development_dependency 'rspec-rails', '3.5.2'
+  s.add_development_dependency 'rspec-rails', '3.8.2'
   s.add_development_dependency 'rails-controller-testing', '1.0.2'
   s.add_development_dependency 'mock_redis', '~> 0.17.3'
   s.add_development_dependency 'launchy', '2.4.3'

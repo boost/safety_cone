@@ -25,7 +25,7 @@ module SafetyCone
 
         @paths = SafetyCone.paths
 
-        get :edit, id: 'home_edit'
+        get :edit, params: { id: 'home_edit' }
       }
 
       it 'response status 200' do
